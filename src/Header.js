@@ -4,7 +4,7 @@ const Header = () => {
     return(
         <header>
             <div className="logoWrapper">
-                <img src={logo} alt="An image of large blue pixels forming a pattern" />
+                <img src={logo} alt="Large blue pixels forming a pattern" />
             </div>
             <h1>The background noise generator</h1>
         </header>
