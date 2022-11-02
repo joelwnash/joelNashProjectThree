@@ -21,3 +21,11 @@ input, button {
     font-weight: 500;
     color: #3b3b3b;
 }
+
+a {
+    color: #333333;
+    transition: 0.2s color;
+    &:hover, &:focus {
+        color: #777777;
+    } 
+}

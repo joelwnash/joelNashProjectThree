@@ -1,0 +1,111 @@
+// Tablet landscape sizing - 1024px
+@media (max-width: 1024px) {
+
+    .colourFieldset, .sizeFieldset {
+        width: 100%;
+    }
+
+    input {
+        width: 60%;
+    }
+
+    .colourWrapper {
+        width: calc(100% - 480px);
+    }
+
+    .redWrapper, .greenWrapper, .blueWrapper {
+        justify-content: flex-end;
+    }
+
+    .colourFieldset {
+        border-right: none;
+        padding-bottom: 30px;
+        margin-bottom: 10px;
+    }
+
+    .sizeFieldset {
+        margin-top: 20px;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+    }
+
+    legend {
+        margin-bottom: 0;
+    }
+
+    .tileSizeWrapper, .tilesWrapper {
+        margin-bottom: 20px;
+    }
+
+
+}
+
+
+// Tablet sizing - 768px
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 2.4rem;
+    }
+
+    .instructions {
+        font-size: 0.9rem;
+    }
+
+    .colourWrapper {
+        width: 220px;
+        padding: 0;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+
+}
+
+
+// Large mobile sizing - 480px
+@media (max-width: 480px) {
+
+    .logoWrapper {
+        display: none;
+    }
+
+    h1 {
+        width: 100%;
+        font-size: 3.1rem;
+        line-height: 2.1rem;
+    }
+
+    .colourSectionWrapper {
+        flex-flow: column-reverse nowrap;
+    }
+
+    .colourWrapper {
+        width: 200px;
+        padding-bottom: 16px;
+    }
+
+    .redWrapper, .greenWrapper, .blueWrapper {
+        justify-content: space-between;
+    }
+
+    .sizeFieldset {
+        padding: 20px;
+    }
+
+    legend {
+        padding: 0 20px;
+    }
+
+    button {
+        margin: auto 30px;
+    }
+
+    .imageWrapper {
+        width: 60%
+    }
+
+}
+

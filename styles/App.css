@@ -249,6 +249,15 @@ input, button {
   color: #3b3b3b;
 }
 
+a {
+  color: #333333;
+  -webkit-transition: 0.2s color;
+  transition: 0.2s color;
+}
+a:hover, a:focus {
+  color: #777777;
+}
+
 header {
   background-color: white;
   padding: 20px;
@@ -267,6 +276,7 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-flow: row nowrap;
           flex-flow: row nowrap;
+  z-index: 100;
 }
 
 .logoWrapper {
@@ -277,6 +287,19 @@ header {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.instructionsSection {
+  background-color: #eeeeee;
+}
+
+.instructions {
+  font-weight: 300;
+  text-align: center;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
 form {
@@ -307,6 +330,7 @@ label {
   font-weight: 300;
   font-size: 0.9rem;
   margin-bottom: 6px;
+  text-align: center;
 }
 
 input {
@@ -359,7 +383,7 @@ input {
 
 .colourWrapper {
   width: calc(100% - 320px);
-  padding: 0 40px;
+  padding: 0 0 0 40px;
 }
 
 .redWrapper, .greenWrapper, .blueWrapper {
@@ -417,4 +441,105 @@ button {
   border: 2px solid #3b3b3b;
   padding: 10px 20px;
   border-radius: 10px;
+}
+
+.imageWrapper {
+  width: 40%;
+  margin: 40px auto;
+}
+.imageWrapper img {
+  width: 100%;
+}
+
+footer {
+  background-color: #eeeeee;
+  padding: 10px 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .colourFieldset, .sizeFieldset {
+    width: 100%;
+  }
+  input {
+    width: 60%;
+  }
+  .colourWrapper {
+    width: calc(100% - 480px);
+  }
+  .redWrapper, .greenWrapper, .blueWrapper {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .colourFieldset {
+    border-right: none;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+  }
+  .sizeFieldset {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+  legend {
+    margin-bottom: 0;
+  }
+  .tileSizeWrapper, .tilesWrapper {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3.4rem;
+    line-height: 2.4rem;
+  }
+  .instructions {
+    font-size: 0.9rem;
+  }
+  .colourWrapper {
+    width: 220px;
+    padding: 0;
+  }
+  footer {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 480px) {
+  .logoWrapper {
+    display: none;
+  }
+  h1 {
+    width: 100%;
+    font-size: 3.1rem;
+    line-height: 2.1rem;
+  }
+  .colourSectionWrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-flow: column-reverse nowrap;
+            flex-flow: column-reverse nowrap;
+  }
+  .colourWrapper {
+    width: 200px;
+    padding-bottom: 16px;
+  }
+  .redWrapper, .greenWrapper, .blueWrapper {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .sizeFieldset {
+    padding: 20px;
+  }
+  legend {
+    padding: 0 20px;
+  }
+  button {
+    margin: auto 30px;
+  }
+  .imageWrapper {
+    width: 60%;
+  }
 }
