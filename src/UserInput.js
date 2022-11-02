@@ -43,91 +43,109 @@ const UserInput = () => {
 
     useEffect(update, [apiUrl]);
 
-
     return(
         <>
             <section>
-                <div
-                      style={{
-                        backgroundColor: `rgb(${userChoice.redValue}, ${userChoice.greenValue}, ${userChoice.blueValue})`,
-                        width: '100px',
-                        height: '100px'
-                      }}
-                
-                
-                
-                >
 
-
-
-                </div>
                 <form onSubmit={getImage}>
-                    <fieldset>
-                        <legend>Make your RGB selection</legend>
-                            <label htmlFor="redValue">Red value:</label>
-                            <input
-                                type="number"
-                                name="redValue"
-                                id="redValue"
-                                min="0"
-                                max="255"
-                                value={userChoice.redValue}
-                                placeholder="0-255"
-                                onChange={handleUserChoice}
-                            />
-                            <label htmlFor="greenValue">Green value:</label>
-                            <input
-                                type="number"
-                                name="greenValue"
-                                id="greenValue"
-                                min="0"
-                                max="255"
-                                value={userChoice.greenValue}
-                                placeholder="0-255"
-                                onChange={handleUserChoice}
-                            />
-                            <label htmlFor="blueValue">Blue value:</label>
-                            <input
-                                type="number"
-                                name="blueValue"
-                                id="blueValue"
-                                min="0"
-                                max="255"
-                                value={userChoice.blueValue}
-                                placeholder="0-255"
-                                onChange={handleUserChoice}
-                            />
+                    <fieldset className="colourFieldset">
+                        <legend>Make your RGB selection (values from 0-255):</legend>
+                            <div className="colourSectionWrapper">
+                                <div className="colourBox"
+                                    style={{
+                                        backgroundColor: `rgb(${userChoice.redValue}, ${userChoice.greenValue}, ${userChoice.blueValue})`
+                                    }}
+                                >
+                                    {
+                                        userChoice.redValue && userChoice.greenValue && userChoice.blueValue
+                                        ? ''
+                                        : <p className="yourColour">Enter RGB values to see sample colour:</p>
+                                    }
+
+                                </div>
+                                <div className="colourWrapper">
+                                    <div className="redWrapper">
+                                        <label htmlFor="redValue">Red:</label>
+                                        <input
+                                            type="number"
+                                            name="redValue"
+                                            id="redValue"
+                                            min="0"
+                                            max="255"
+                                            value={userChoice.redValue}
+                                            placeholder="0-255"
+                                            onChange={handleUserChoice}
+                                        />
+                                    </div>
+                                    <div className="greenWrapper">
+                                        <label htmlFor="greenValue">Green:</label>
+                                        <input
+                                            type="number"
+                                            name="greenValue"
+                                            id="greenValue"
+                                            min="0"
+                                            max="255"
+                                            value={userChoice.greenValue}
+                                            placeholder="0-255"
+                                            onChange={handleUserChoice}
+                                        />
+                                    </div>
+                                    <div className="blueWrapper">
+                                        <label htmlFor="blueValue">Blue:</label>
+                                        <input
+                                            type="number"
+                                            name="blueValue"
+                                            id="blueValue"
+                                            min="0"
+                                            max="255"
+                                            value={userChoice.blueValue}
+                                            placeholder="0-255"
+                                            onChange={handleUserChoice}
+                                        />
+                                    </div>
+                                </div>
+                            </div>                            
                     </fieldset>
-                    <fieldset>
-                        <legend>Choose tile and image size!</legend>
-                            <label htmlFor="tileSize">Width and height of 1 tile in pixels:</label>
-                                <input
-                                    type="number"
-                                    name="tileSize"
-                                    id="tileSize"
-                                    min="1"
-                                    max="20"
-                                    value={userChoice.tileSize}
-                                    placeholder="1-20"
-                                    onChange={handleUserChoice}
-                                />
-                            <label htmlFor="tiles">Number of tiles per row and column:</label>
-                                <input
-                                    type="number"
-                                    name="tiles"
-                                    id="tiles"
-                                    min="4"
-                                    max="50"
-                                    value={userChoice.tiles}
-                                    placeholder="4-50"
-                                    onChange={handleUserChoice}
-                                />
+                    <fieldset className="sizeFieldset">
+                        <legend>Choose tile and image size:</legend>
+                            <div className="sizeWrapper">
+                                <div className="tileSizeWrapper">
+                                    <label htmlFor="tileSize">Width and height of 1 tile in pixels:</label>
+                                    <input
+                                        type="number"
+                                        name="tileSize"
+                                        id="tileSize"
+                                        min="1"
+                                        max="20"
+                                        value={userChoice.tileSize}
+                                        placeholder="1-20"
+                                        onChange={handleUserChoice}
+                                    />
+                                </div>
+                                <div className="tilesWrapper">
+                                    <label htmlFor="tiles">Number of tiles per row and column:</label>
+                                    <input
+                                        type="number"
+                                        name="tiles"
+                                        id="tiles"
+                                        min="4"
+                                        max="50"
+                                        value={userChoice.tiles}
+                                        placeholder="4-50"
+                                        onChange={handleUserChoice}
+                                    />
+                                </div>
+                            </div>
 
                     </fieldset>
                 <button type="submit">Generate my background!</button>
                 </form>
             </section>
-             <GetImage imageUrl={imageUrl} />
+            {
+                imageUrl
+                ? <GetImage imageUrl={imageUrl} />
+                : null
+            }
         </>
 
     )
