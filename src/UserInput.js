@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import GetImage from "./GetImage";
-
 
 const UserInput = () => {
 
     // Stateful variable to store url parameters
-    const [ userChoice, setUserChoice ] = useState({ redValue: '', greenValue: '', blueValue: '', tiles: 50, tileSize: 7 });
+    const [ userChoice, setUserChoice ] = useState({
+                                                        redValue: '',
+                                                        greenValue: '',
+                                                        blueValue: '',
+                                                        tiles: 50,
+                                                        tileSize: 7});
 
-    // Function to update url parameters based
+    // Function to update url parameters based on input values
     const handleUserChoice = (e) => {
         setUserChoice(existingValues => ({
             ...existingValues,
@@ -20,14 +23,24 @@ const UserInput = () => {
     // Initialize a stateful variable for the API url
     const [ apiUrl, setApiUrl ] = useState('');
 
-    // On submit, construct the url
+    // On form submission, construct the url
     const getImage = (e) => {
       e.preventDefault();
-      const redValue = userChoice.redValue ? `r=${userChoice.redValue}&` : '';
-      const greenValue = userChoice.greenValue ? `g=${userChoice.greenValue}&` : '';
-      const blueValue = userChoice.blueValue ? `b=${userChoice.blueValue}&` : '';
-      const tiles = userChoice.tiles ? `tiles=${userChoice.tiles}&` : '';
-      const tileSize = userChoice.tileSize ? `tileSize=${userChoice.tileSize}&` : '';
+      const redValue = userChoice.redValue
+                        ? `r=${userChoice.redValue}&`
+                        : '';
+      const greenValue = userChoice.greenValue
+                        ? `g=${userChoice.greenValue}&`
+                        : '';
+      const blueValue = userChoice.blueValue
+                        ? `b=${userChoice.blueValue}&`
+                        : '';
+      const tiles = userChoice.tiles
+                        ? `tiles=${userChoice.tiles}&`
+                        : '';
+      const tileSize = userChoice.tileSize
+                        ? `tileSize=${userChoice.tileSize}&`
+                        : '';
       setApiUrl(`https://php-noise.com/noise.php?${redValue}${greenValue}${blueValue}${tiles}${tileSize}json`);
     }
 
@@ -48,10 +61,15 @@ const UserInput = () => {
             <section>
 
                 <form onSubmit={getImage}>
+
                     <fieldset className="colourFieldset">
+
                         <legend>Make your RGB selection (values from 0-255):</legend>
+
                             <div className="colourSectionWrapper">
+
                                 <div className="colourBox"
+
                                     style={{
                                         backgroundColor: `rgb(${userChoice.redValue}, ${userChoice.greenValue}, ${userChoice.blueValue})`
                                     }}
@@ -62,10 +80,14 @@ const UserInput = () => {
                                         : <p className="yourColour">Enter RGB values to see sample colour:</p>
                                     }
 
-                                </div>
+                                </div> {/*.colourBox closure */}
+
                                 <div className="colourWrapper">
+
                                     <div className="redWrapper">
+
                                         <label htmlFor="redValue">Red:</label>
+
                                         <input
                                             type="number"
                                             name="redValue"
@@ -76,9 +98,13 @@ const UserInput = () => {
                                             placeholder="0-255"
                                             onChange={handleUserChoice}
                                         />
-                                    </div>
+
+                                    </div> {/*.redWrapper closure */}
+
                                     <div className="greenWrapper">
+
                                         <label htmlFor="greenValue">Green:</label>
+
                                         <input
                                             type="number"
                                             name="greenValue"
@@ -89,9 +115,13 @@ const UserInput = () => {
                                             placeholder="0-255"
                                             onChange={handleUserChoice}
                                         />
-                                    </div>
+
+                                    </div> {/*.greenWrapper closure */}
+
                                     <div className="blueWrapper">
+
                                         <label htmlFor="blueValue">Blue:</label>
+
                                         <input
                                             type="number"
                                             name="blueValue"
@@ -102,15 +132,25 @@ const UserInput = () => {
                                             placeholder="0-255"
                                             onChange={handleUserChoice}
                                         />
-                                    </div>
-                                </div>
-                            </div>                            
-                    </fieldset>
+
+                                    </div> {/*.blueWrapper closure */}
+
+                                </div> {/*.colourWrapper closure */}
+
+                             </div> {/*.colourSectionWrapper closure */}
+
+                    </fieldset> {/*.colourFieldset closure */}
+
                     <fieldset className="sizeFieldset">
+
                         <legend>Choose tile and image size:</legend>
+
                             <div className="sizeWrapper">
+
                                 <div className="tileSizeWrapper">
+
                                     <label htmlFor="tileSize">Width and height of 1 tile in pixels:</label>
+
                                     <input
                                         type="number"
                                         name="tileSize"
@@ -121,9 +161,13 @@ const UserInput = () => {
                                         placeholder="1-20"
                                         onChange={handleUserChoice}
                                     />
-                                </div>
+
+                                </div> {/*.tileSizeWrapper closure */}
+
                                 <div className="tilesWrapper">
+
                                     <label htmlFor="tiles">Number of tiles per row and column:</label>
+
                                     <input
                                         type="number"
                                         name="tiles"
@@ -134,20 +178,26 @@ const UserInput = () => {
                                         placeholder="4-50"
                                         onChange={handleUserChoice}
                                     />
-                                </div>
-                            </div>
 
-                    </fieldset>
+                                </div> {/*.tilesWrapper closure */}
+
+                            </div> {/*.sizeWrapper closure */}
+
+                    </fieldset> {/*.sizeFieldset closure */}
+
                 <button type="submit">Generate my background!</button>
+
                 </form>
+
             </section>
+
             {
                 imageUrl
                 ? <GetImage imageUrl={imageUrl} />
                 : null
             }
-        </>
 
+        </>
     )
 }
 
